@@ -1,7 +1,7 @@
 import { Invalid_Arguments_exception } from "../exceptions/invalid_arguments_exceptions.js";
 import { invalidcredentialsexceptions } from "../exceptions/invalid_credentials_exceptions.js";
 import {getDependency } from  '../libs/dependencies.js';
-
+import bcrypt from "bcrypt";
 
 export class LoginService {
   static async login(credentials) {
