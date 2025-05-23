@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/pablovepa/desarrollo#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "^5.1.0"
   }
 }
