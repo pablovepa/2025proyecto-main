@@ -1,9 +1,10 @@
 export class UserMockup { 
  static users = [ 
 {
+id: 1,   
 username: `admin` ,
 password: `1234` ,
-name: `admin` ,
+fullname: `admin` ,
 email: `admin@fae.com` , 
  },
 { 

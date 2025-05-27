@@ -2,6 +2,8 @@ import { Invalid_Arguments_exception } from "../exceptions/invalid_arguments_exc
 import { invalidcredentialsexceptions } from "../exceptions/invalid_credentials_exceptions.js";
 import {getDependency } from  '../libs/dependencies.js';
 import bcrypt from "bcrypt";
+import config from '../config.js';
+import jwt from 'jsonwebtoken';
 
 export class LoginService {
   static async login(credentials) {
@@ -17,12 +19,24 @@ export class LoginService {
     const user = await UserService.getSignleOrNullByUsername (credentials.username);
     if (!user)
       throw new invalidcredentialsexceptions();
-
-    if (credentials.password !== user.password)
+    if (!(await bcrypt.compare(credentials.password, user.password)))
       throw new invalidcredentialsexceptions();
+    
 
-    return {
-      token: "token de acceso",
-    };
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        userName: user.username,
+        userFullName: user.fullname,
+      },
+      config.jwtKey,
+      {
+        expiresIn: '1h' // El token expirará en 1 hora
+      }
+    );
+  
+    return {token};
+
   }
 }
+ 

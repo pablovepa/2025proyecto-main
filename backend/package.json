@@ -1,7 +1,6 @@
 {
   "name": "proyecto2525",
   "version": "1.0.0",
-  "description": "",
   "keywords": [],
   "license": "ISC",
   "author": "",
@@ -13,9 +12,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "eslint": "^9.26.0"
-  }
+  },
+  "description": ""
 }
