@@ -34,4 +34,3 @@ coverage/
 *.tgz
 *.swp
 *.swo
-backend/config.local.js

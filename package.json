@@ -1,23 +1,6 @@
 {
-  "name": "proyecto",
-  "version": "1.0.0",
-  "description": "practica desarrollo",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pablovepa/desarrollo.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pablovepa/desarrollo/issues"
-  },
-  "homepage": "https://github.com/pablovepa/desarrollo#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "express": "^5.1.0"
+    "jsonwebtoken": "^9.0.2"
   }
 }
