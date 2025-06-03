@@ -4,7 +4,7 @@ export default[
     {
         files:`` [`**/*.js`] ,
         languageOptions: {
-            ecmavewrsion: 2020,
+            ecmaVersion: 2020,
             globals: globals.builtin,
         },
         rules: {

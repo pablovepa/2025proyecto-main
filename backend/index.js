@@ -7,14 +7,20 @@ import { UserService } from './services/user.js';
 import { LoginService } from './services/login.js';
 import { UserMockup } from './mockups/user.js';
 import config from './config.js';
+import mongoose from 'mongoose';
 
-const app = express();
+    const app = express();
 
-const router= express.Router();
-app.use('/api',router);
+    const router= express.Router();
+    app.use('/api',router);
 
-router.use(express.json());
-router.use(logMiddleware);
+    router.use(express.json());
+    router.use(logMiddleware);
+
+     mongoose.connect(config.dbConnection)
+     .then(() => console.log('Conexión a la base de datos mongoDB exitosa'))
+    .catch(err => console.error('Error al conectar a la base de datos mongoDB:', err));
+
 
 controllers(router);
 
