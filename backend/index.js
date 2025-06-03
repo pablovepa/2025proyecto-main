@@ -2,13 +2,10 @@ import express from 'express'
 import {controllers} from './controllers/controllers.js';
 import { errorHandlerMiddleware } from './middleware/error_Handler_Middleware.js';
 import { logMiddleware } from './middleware/log_middleware.js';
-import { addDependency } from './libs/dependencies.js';
-import { UserService } from './services/user.js';
-import { LoginService } from './services/login.js';
 import { UserMockup } from './mockups/user.js';
 import config from './config.js';
 import mongoose from 'mongoose';
-
+import configureDependencies from './configure_dependecy.js';
     const app = express();
 
     const router= express.Router();
@@ -26,9 +23,7 @@ controllers(router);
 
 router.use(errorHandlerMiddleware);
 
-addDependency (`UserService` , UserService);
-addDependency (`LoginService` , LoginService);
-addDependency (`UserModel` , UserMockup);
+configureDependencies();
 
 const PORT = 3000;
 app.listen(

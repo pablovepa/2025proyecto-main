@@ -6,6 +6,6 @@ const userSchema = new mongoose.Schema({
     hashedPassword: String, 
     name: String,
     email: String,
-    roles: [String],
+    roles: Array,
 });
 export default mongoose.model("User", userSchema);
