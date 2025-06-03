@@ -2,7 +2,7 @@ import { Invalid_Arguments_exception } from "../exceptions/invalid_arguments_exc
 import { invalidcredentialsexceptions } from "../exceptions/invalid_credentials_exceptions.js";
 import {getDependency } from  '../libs/dependencies.js';
 import { generarJWT } from "../utils/jwt.js";
-
+import bcrypt from "bcrypt";
 
 export class LoginService {
   static async login(credentials) {
@@ -15,11 +15,17 @@ export class LoginService {
       throw new Invalid_Arguments_exception();
 
     const UserService = getDependency("UserService");
- const user = await UserService.getSignleOrNullByUsername(credentials.username);
+    const user = await UserService.getSignleOrNullByUsername(credentials.username);
     if (!user)
       throw new invalidcredentialsexceptions();
 
-    if (credentials.password !== user.password) throw new invalidcredentialsexceptions();
+    //const hash = bcrypt.hashSync(credentials.password, 10);
+    //console.log(`Hash: ${hash}`);
+
+    if (!bcrypt.compareSync(credentials.password, user.hashedPassword))
+      throw new invalidcredentialsexceptions();
+
+    //if (credentials.password !== user.password) throw new invalidcredentialsexceptions();
 
     const token = generarJWT({ id: user.id, username: user.username });
     

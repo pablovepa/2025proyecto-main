@@ -1,9 +1,12 @@
+import { hash } from "bcrypt";
+
 export class UserMockup { 
  static users = [ 
 {
    id : 1,
 username: `admin` ,
-password: `1234` ,
+
+hashedPassword: "$2b$10$Qi9r/C8WheuQFPWpvqbKNuPJOSP2ngNx6DsQO8uQfhJ72HDirX3s.",
 name: `admin` ,
 email: `admin@fae.com` ,
 roles: [`admin`], 
